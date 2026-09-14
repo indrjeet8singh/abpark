@@ -171,7 +171,7 @@ const UgaaiList = () => {
       }
 
       const response = await fetch(
-           "https://ambedkar-backend.onrender.com/api/ugaai/${editData._id}`,
+           `https://ambedkar-backend.onrender.com/api/ugaai/${editData._id}`,
         {
           method: "PUT",
           headers: {
