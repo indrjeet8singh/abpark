@@ -1,0 +1,273 @@
+
+.about-page {
+  background: #f8f9fa;
+  min-height: 100vh;
+}
+
+/* Hero */
+
+.about-hero {
+  background: linear-gradient(135deg, #003b73, #0066cc);
+  color: white;
+  padding: 80px 0;
+}
+
+.about-hero h1 {
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+.about-hero h3 {
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.about-hero p {
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin-top: 20px;
+}
+
+.ambedkar-symbol {
+  width: 180px;
+  height: 180px;
+  margin: auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: white;
+  color: #0066cc;
+
+  font-size: 90px;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+
+/* Section Title */
+
+.section-title h2 {
+  color: #003b73;
+  font-weight: 700;
+}
+
+.section-title p {
+  color: #6c757d;
+}
+
+
+/* Info Cards */
+
+.info-card {
+  border: none;
+  border-radius: 15px;
+
+  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+
+  transition: 0.3s;
+}
+
+.info-card:hover {
+  transform: translateY(-8px);
+}
+
+.icon {
+  font-size: 40px;
+  margin-bottom: 15px;
+}
+
+
+/* Founder */
+
+.founder-section {
+  background: #eaf3ff;
+}
+
+.founder-card {
+  border-radius: 20px;
+}
+
+.founder-icon {
+  width: 100px;
+  height: 100px;
+
+  margin: auto;
+
+  border-radius: 50%;
+
+  background: #0066cc;
+
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 45px;
+}
+
+
+/* History */
+
+.history-box {
+  background: white;
+
+  padding: 35px;
+
+  border-radius: 15px;
+
+  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+
+  font-size: 17px;
+
+  line-height: 1.8;
+}
+
+.history-box blockquote {
+  margin-top: 25px;
+
+  padding: 20px;
+
+  border-left: 5px solid #0066cc;
+
+  background: #f0f7ff;
+
+  font-size: 20px;
+
+  font-weight: 600;
+
+  color: #003b73;
+}
+
+
+/* Committee */
+
+.committee-section {
+  background: #ffffff;
+}
+
+.member-card {
+  border: none;
+
+  border-radius: 15px;
+
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+
+  transition: 0.3s;
+}
+
+.member-card:hover {
+  transform: translateY(-8px);
+}
+
+.member-avatar {
+  width: 75px;
+  height: 75px;
+
+  margin: auto;
+
+  margin-bottom: 15px;
+
+  border-radius: 50%;
+
+  background: #0066cc;
+
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 30px;
+
+  font-weight: bold;
+}
+
+
+/* Managing Team */
+
+.managing-card {
+  border: none;
+
+  border-radius: 15px;
+
+  box-shadow: 0 5px 18px rgba(0,0,0,0.08);
+
+  transition: 0.3s;
+}
+
+.managing-card:hover {
+  transform: translateY(-8px);
+}
+
+.team-number {
+  width: 50px;
+  height: 50px;
+
+  margin: auto;
+
+  margin-bottom: 15px;
+
+  border-radius: 50%;
+
+  background: #003b73;
+
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: bold;
+}
+
+
+/* Vision */
+
+.vision-section {
+  background: #003b73;
+
+  color: white;
+}
+
+.vision-box {
+  padding: 25px;
+}
+
+.vision-box h2 {
+  font-size: 45px;
+}
+
+
+/* Responsive */
+
+@media (max-width: 768px) {
+
+  .about-hero {
+    padding: 50px 20px;
+    text-align: center;
+  }
+
+  .about-hero h1 {
+    font-size: 2rem;
+  }
+
+  .ambedkar-symbol {
+    margin-top: 30px;
+
+    width: 140px;
+    height: 140px;
+
+    font-size: 70px;
+  }
+
+  .history-box {
+    padding: 20px;
+  }
+
+}
+

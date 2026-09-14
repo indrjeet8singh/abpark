@@ -1,0 +1,236 @@
+
+.ambedkar-page {
+  background: #f8f9fa;
+  color: #212529;
+}
+
+/* Hero */
+
+.ambedkar-hero {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #003b73, #0d6efd);
+  color: white;
+}
+
+.hero-badge {
+  display: inline-block;
+  background: white;
+  color: #003b73;
+  padding: 8px 18px;
+  border-radius: 30px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.ambedkar-hero h1 {
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+.ambedkar-hero h4 {
+  opacity: 0.9;
+}
+
+.ambedkar-hero p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.hero-quote {
+  font-weight: bold;
+  font-size: 1.2rem !important;
+}
+
+.ambedkar-image-box {
+  width: 250px;
+  height: 350px;
+  margin: auto;
+  border-radius: 20px;
+  background: white;
+  color: #003b73;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+
+/* Heading */
+
+.section-heading h2 {
+  color: #003b73;
+  font-weight: 700;
+}
+
+.section-heading p {
+  color: #6c757d;
+}
+
+
+/* Content Box */
+
+.content-box {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+  line-height: 1.9;
+  font-size: 17px;
+}
+
+
+/* Detail Cards */
+
+.life-section {
+  background: #eaf3ff;
+}
+
+.detail-card {
+  border: none;
+  text-align: center;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+  transition: 0.3s;
+}
+
+.detail-card:hover {
+  transform: translateY(-8px);
+}
+
+.detail-icon {
+  font-size: 45px;
+  margin-bottom: 15px;
+}
+
+
+/* Struggle */
+
+.struggle-section {
+  background: #003b73;
+}
+
+.struggle-card {
+  background: white;
+  padding: 30px;
+  text-align: center;
+  border-radius: 15px;
+  height: 100%;
+  color: #212529;
+  transition: 0.3s;
+}
+
+.struggle-card:hover {
+  transform: translateY(-8px);
+}
+
+.struggle-card h2 {
+  font-size: 45px;
+}
+
+
+/* Constitution */
+
+.constitution-section {
+  background: #ffffff;
+}
+
+.constitution-section h2 {
+  color: #003b73;
+  font-weight: 700;
+}
+
+.constitution-section p {
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+.constitution-symbol {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: #eaf3ff;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 90px;
+}
+
+
+/* Message */
+
+.message-section {
+  background: #eaf3ff;
+}
+
+.main-quote {
+  max-width: 800px;
+  margin: 30px auto;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #003b73;
+}
+
+.main-quote span {
+  font-size: 4rem;
+}
+
+
+/* Legacy */
+
+.legacy-section {
+  background: white;
+}
+
+.legacy-card {
+  text-align: center;
+  padding: 30px;
+  border-radius: 15px;
+  background: #f8f9fa;
+  transition: 0.3s;
+}
+
+.legacy-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.legacy-card h2 {
+  font-size: 45px;
+}
+
+
+/* Mobile */
+
+@media (max-width: 768px) {
+
+  .ambedkar-hero {
+    text-align: center;
+    padding: 50px 15px;
+  }
+
+  .ambedkar-hero h1 {
+    font-size: 2rem;
+  }
+
+  .ambedkar-image-box {
+    width: 230px;
+    height: 280px;
+    margin-top: 30px;
+  }
+
+  .content-box {
+    padding: 20px;
+  }
+
+  .constitution-symbol {
+    margin-bottom: 30px;
+  }
+
+  .main-quote {
+    font-size: 1.5rem;
+  }
+
+}
+

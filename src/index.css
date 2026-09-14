@@ -1,0 +1,32 @@
+/* .navbar-brand{
+    color: antiquewhite;
+} 
+.headerbar {
+  
+  z-index: 1030;
+  position: fixed !important;
+  background-color: bisque !important;
+}
+Navbar{
+    height: 75px;
+} */
+
+html,
+body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+.slide-box img {
+  width: 100%;
+  height: 400px;
+  object-fit: contain;
+}
+
+@media (max-width: 767px) {
+  .slide-box img {
+    height: 350px;
+  }
+}
+
+

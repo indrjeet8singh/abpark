@@ -1,0 +1,110 @@
+
+.mahapurush-page {
+  min-height: 100vh;
+  background: #f5f8fc;
+}
+
+.jai-bhim {
+  display: inline-block;
+  padding: 8px 20px;
+  border-radius: 30px;
+  background: #e7f1ff;
+  color: #0056b3;
+  font-weight: 600;
+}
+
+.page-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #003b73;
+}
+
+.page-subtitle {
+  max-width: 700px;
+  margin: auto;
+  color: #6c757d;
+  font-size: 1.1rem;
+}
+
+/* Card */
+
+.mahapurush-card {
+  border: none;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  transition: 0.3s ease;
+}
+
+.mahapurush-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(0, 59, 115, 0.18);
+}
+
+/* Image */
+
+.image-wrapper {
+  width: 100%;
+  height: 280px;
+  overflow: hidden;
+  background: #e9ecef;
+}
+
+.mahapurush-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  transition: 0.4s ease;
+}
+
+.mahapurush-card:hover .mahapurush-image {
+  transform: scale(1.05);
+}
+
+/* Text */
+
+.mahapurush-card .card-body {
+  padding: 20px;
+}
+
+.mahapurush-name {
+  font-weight: 700;
+  color: #003b73;
+  margin-bottom: 8px;
+}
+
+.mahapurush-title {
+  color: #0066cc;
+  font-weight: 600;
+  min-height: 45px;
+}
+
+.line {
+  width: 60px;
+  height: 3px;
+  background: #0066cc;
+  margin: 12px auto;
+  border-radius: 10px;
+}
+
+.mahapurush-about {
+  color: #555;
+  line-height: 1.7;
+  font-size: 14px;
+  margin-bottom: 0;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+  .page-title {
+    font-size: 2rem;
+  }
+
+  .image-wrapper {
+    height: 350px;
+  }
+}
+
