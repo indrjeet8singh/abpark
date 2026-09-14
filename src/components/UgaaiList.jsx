@@ -69,7 +69,7 @@ const UgaaiList = () => {
         setLoading(true);
 
         const response = await fetch(
-          "http://localhost:5000/api/ugaai"
+     "https://ambedkar-backend.onrender.com/api/ugaai"
         );
 
         if (!response.ok) {
