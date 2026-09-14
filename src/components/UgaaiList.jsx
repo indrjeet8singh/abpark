@@ -260,7 +260,7 @@ const UgaaiList = () => {
       }
 
       const response = await fetch(
-        `http://localhost:5000/api/ugaai/${id}`,
+        `https://ambedkar-backend.onrender.com/api/ugaai/${id}`,
         {
           method: "DELETE",
           headers: {
