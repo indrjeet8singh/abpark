@@ -12,7 +12,7 @@ function ActivistPage() {
   const activists = [
     {
       id: 1,
-      name: "सामाजिक कार्यकर्ता का नाम",
+      name: "नगीना सांसद चंद्रशेखर आजाद",
       role: "बहुजन समाज सेवक एवं सामाजिक कार्यकर्ता",
       image:
         "https://i.ibb.co/ZphDjgjF/Mobile-Azad-home.png",
