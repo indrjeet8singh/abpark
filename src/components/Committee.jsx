@@ -127,7 +127,7 @@ const Committee = () => {
       memberPosition:" मैनेजिंग टीम सदस्य",
       name: "कपिल",
       images:
-        "https://i.ibb.co/FLJkbq8Y/IMG-20260414-011437.jpg",
+        "https://i.ibb.co/ZRbP3RQG/1000229025.jpg",
 
     },
     {
