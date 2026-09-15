@@ -101,7 +101,7 @@ const Committee = () => {
     },
     {
       memberPosition:" मैनेजिंग टीम सदस्य",
-      name: "देवदत्ता गौतम",
+      name: "देवदत्त गौतम",
       images:
         "https://i.ibb.co/pr1J0ZGs/dedatta-Gautam.jpg",
     },
