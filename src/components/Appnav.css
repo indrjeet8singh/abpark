@@ -3,8 +3,8 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: clamp(10px, 5vw, 20px);
-      font-weight: 60;
+      font-size: clamp(13px, 15vw, 50px);
+      font-weight: 600;
       letter-spacing: 2px;
       opacity: 0;
       pointer-events: none;
@@ -19,17 +19,17 @@ text-align: center;
     }
 
     .text .space {
-      width: 0.35em;
+      width: 0.25em;
       animation: none; /* Prevents empty space from bouncing */
     }
 
     .bhim {
-      color: #0284c7;
+      color: #07f;
       animation: showBhim 6s infinite;
     }
 
     .bharat {
-      color: #1e3a8a;
+      color: #07f;
       animation: showBharat 6s infinite;
     }
 
