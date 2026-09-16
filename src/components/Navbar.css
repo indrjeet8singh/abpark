@@ -23,12 +23,13 @@
   background: linear-gradient(
     to bottom,
     #FF9933 0%,
-    #FF9933 33%,
+    #FF9933 30%,
 
-    #FFFFFF 33%,
-    #FFFFFF 66%,
+    #FFFFFF 30%,
+#0000ff 10%,
+    #FFFFFF 60%,
 
-    #138808 66%,
+    #138808 60%,
     #138808 100%
   );
 
