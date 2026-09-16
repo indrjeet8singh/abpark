@@ -1,60 +1,80 @@
 .text {
-      position: absolute;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: clamp(2px, 15vw, 20px);
-      font-weight: 600;
-      letter-spacing: 1px;
-margin-left: 30%;
-      opacity: 0;
-      pointer-events: none;
-text-align: center;
-    }
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 
-    .text span {
-      display: inline-block;
-text-align: center;
-      animation: bubble 1.2s ease-in-out infinite;
-      animation-delay: calc(var(--i) * 0.08s);
-    
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: clamp(2px, 15vw, 20px);
+  font-weight: 600;
+  letter-spacing: 1px;
+
+  opacity: 0;
+  pointer-events: none;
+  text-align: center;
+}
+
+.text span {
+  display: inline-block;
+  text-align: center;
+
   text-shadow:
     2px 2px 0 rgba(0, 0, 0, 0.15),
     4px 4px 8px rgba(0, 0, 0, 0.25),
     0 0 12px rgba(255, 255, 255, 0.6);
+
+  animation: bubble 1.2s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.08s);
 }
 
-    .text .space {
-      width: 0.25em;
-      animation: none; /* Prevents empty space from bouncing */
-    }
+.text .space {
+  width: 0.25em;
+  animation: none;
+}
 
-    .bhim {
-      color: #07f;
-      animation: showBhim 6s infinite;
-    }
+.bhim {
+  color: #07f;
+  animation: showBhim 6s infinite;
+}
 
-    .bharat {
-      color: #07f;
-      animation: showBharat 6s infinite;
-    }
+.bharat {
+  color: #07f;
+  animation: showBharat 6s infinite;
+}
 
-    @keyframes showBhim {
-      0%, 42% { opacity: 1; }
-      48%, 100% { opacity: 0; }
-    }
+@keyframes showBhim {
+  0%, 42% {
+    opacity: 1;
+  }
 
-    @keyframes showBharat {
-      0%, 50% { opacity: 0; }
-      56%, 94% { opacity: 1; }
-      100% { opacity: 0; }
-    }
+  48%, 100% {
+    opacity: 0;
+  }
+}
 
-    @keyframes bubble {
-      0%, 100% {
-        transform: translateY(0) scale(1);
-      }
-      50% {
-        transform: translateY(-16px) scale(1.12);
-      }
-    }
+@keyframes showBharat {
+  0%, 50% {
+    opacity: 0;
+  }
+
+  56%, 94% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes bubble {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    transform: translateY(-16px) scale(1.12);
+  }
+}
