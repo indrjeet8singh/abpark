@@ -5,7 +5,7 @@ import React from "react";
 import { Navbar, Container, Button, Nav } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext.jsx";
-import 'Appnav.css'
+import './Appnav.css'
 
 const AppNavbar = () => {
   const { user, logout } = useAuth();
