@@ -3,7 +3,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: clamp(45px, 10vw, 90px);
+      font-size: clamp(15px, 10vw, 40px);
       font-weight: 800;
       letter-spacing: 2px;
       opacity: 0;
