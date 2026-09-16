@@ -6,7 +6,7 @@
       font-size: clamp(2px, 15vw, 20px);
       font-weight: 600;
       letter-spacing: 1px;
-margin: auto;
+margin-left: 50%;
       opacity: 0;
       pointer-events: none;
 text-align: center;
