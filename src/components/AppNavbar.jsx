@@ -5,6 +5,7 @@ import React from "react";
 import { Navbar, Container, Button, Nav } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext.jsx";
+import 'Appnav.css'
 
 const AppNavbar = () => {
   const { user, logout } = useAuth();
@@ -75,18 +76,32 @@ const AppNavbar = () => {
           </Navbar.Brand>
 
           {/* JAI BHIM */}
-          <h1
-            className="m-auto"
-            style={{
-              color: "rgb(1 0 126)",
-              fontWeight: "700",
-              textAlign: "center",
-              textShadow: "0 0 10px rgba(0,102,255,0.5)",
-              animation: "jaiBhimBubble 1.5s ease-in-out infinite",
-            }}
-          >
-            जय भीम
-          </h1>
+          <div class="text bhim">
+    <span style="--i:1">J</span>
+    <span style="--i:2">A</span>
+    <span style="--i:3">I</span>
+    <span class="space"></span>
+    <span style="--i:4">B</span>
+    <span style="--i:5">H</span>
+    <span style="--i:6">I</span>
+    <span style="--i:7">M</span>
+    <span style="--i:8">!</span>
+  </div>
+
+  <!-- JAI BHARAT -->
+  <div class="text bharat">
+    <span style="--i:1">J</span>
+    <span style="--i:2">A</span>
+    <span style="--i:3">I</span>
+    <span class="space"></span>
+    <span style="--i:4">B</span>
+    <span style="--i:5">H</span>
+    <span style="--i:6">A</span>
+    <span style="--i:7">R</span>
+    <span style="--i:8">A</span>
+    <span style="--i:9">T</span>
+    <span style="--i:10">!</span>
+  </div>
 
           {/* RIGHT SIDE */}
           <div className="ms-auto d-flex align-items-center">
