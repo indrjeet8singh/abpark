@@ -106,8 +106,8 @@ const Committee = () => {
         "https://i.ibb.co/pr1J0ZGs/dedatta-Gautam.jpg",
     },
     {
-      memberPosition:" मैनेजिंग टीम सदस्य",
-      name: "अनिल कुमार",
+      memberPosition:"Key Supporter",
+      name: "Dharmendra Singh",
       images:
         "https://i.ibb.co/FLJkbq8Y/IMG-20260414-011437.jpg",
     },
