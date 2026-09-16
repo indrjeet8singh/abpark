@@ -1,0 +1,52 @@
+.text {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: clamp(45px, 10vw, 90px);
+      font-weight: 800;
+      letter-spacing: 2px;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .text span {
+      display: inline-block;
+      animation: bubble 1.2s ease-in-out infinite;
+      animation-delay: calc(var(--i) * 0.08s);
+    }
+
+    .text .space {
+      width: 0.35em;
+      animation: none; /* Prevents empty space from bouncing */
+    }
+
+    .bhim {
+      color: #0284c7;
+      animation: showBhim 6s infinite;
+    }
+
+    .bharat {
+      color: #1e3a8a;
+      animation: showBharat 6s infinite;
+    }
+
+    @keyframes showBhim {
+      0%, 42% { opacity: 1; }
+      48%, 100% { opacity: 0; }
+    }
+
+    @keyframes showBharat {
+      0%, 50% { opacity: 0; }
+      56%, 94% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+
+    @keyframes bubble {
+      0%, 100% {
+        transform: translateY(0) scale(1);
+      }
+      50% {
+        transform: translateY(-16px) scale(1.12);
+      }
+    }
