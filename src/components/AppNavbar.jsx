@@ -90,7 +90,7 @@ const AppNavbar = () => {
         <span style={{ "--i": 8 }}>!</span>
       </div>
 
-      {/* JAI BHARAT */}
+      {/* JAI BHARAT 
       <div className="text bharat">
         <span style={{ "--i": 1 }}>J</span>
         <span style={{ "--i": 2 }}>A</span>
@@ -105,7 +105,7 @@ const AppNavbar = () => {
         <span style={{ "--i": 8 }}>A</span>
         <span style={{ "--i": 9 }}>T</span>
         <span style={{ "--i": 10 }}>!</span>
-      </div>
+      </div> */}
 
           {/* RIGHT SIDE */}
           <div className="ms-auto d-flex align-items-center">
