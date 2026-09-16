@@ -3,8 +3,8 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: clamp(15px, 10vw, 40px);
-      font-weight: 800;
+      font-size: clamp(10px, 5vw, 20px);
+      font-weight: 60;
       letter-spacing: 2px;
       opacity: 0;
       pointer-events: none;
