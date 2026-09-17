@@ -595,7 +595,7 @@ const AmbedkarParkHome = () => {
             <img
               className=""
               style={{ height: "400px", marginBottom: "10px" }}
-              src="https://i.ibb.co/0jxrmYkS/bihar.png"
+              src="https://i.ibb.co/LXsLJ2wN/gautam-buddha.png"
               alt=""
             />
           </div>
