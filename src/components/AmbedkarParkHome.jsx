@@ -227,6 +227,18 @@ const AmbedkarParkHome = () => {
               }}
             />
           </Carousel.Item>
+<Carousel.Item>
+            <img
+              src="https://i.ibb.co/BH4mpBHf/1000230731.jpg"
+              alt="Kamil Raza"
+              className="d-block w-100"
+              style={{
+                height: "650px",
+                objectFit: "cover",
+                filter: "brightness(40%)",
+              }}
+            />
+          </Carousel.Item>
 {/* ----------------------------------------------- */}
   <Carousel.Item>
             <img
