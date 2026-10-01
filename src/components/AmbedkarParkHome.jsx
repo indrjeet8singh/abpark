@@ -913,8 +913,8 @@ const AmbedkarParkHome = () => {
             <Col md={6} lg={4}>
               <Card className="border-0 shadow-sm overflow-hidden h-100">
                 <img
-                  src="https://i.ibb.co/8n8xx3GQ/Whats-App-Image-2026-09-11-at-12-30-45-PM-2.jpg"
-                  alt="रात्रि कार्यक्रम"
+                  src="https://i.ibb.co/BH4mpBHf/1000230731.jpg"
+                  alt="Kamil Raza"
                   className="img-fluid"
                   style={{
                     height: "260px",
@@ -924,7 +924,7 @@ const AmbedkarParkHome = () => {
                 />
 
                 <Card.Body>
-                  <h5 className="fw-bold mb-0">रात्रि कार्यक्रम</h5>
+                  <h5 className="fw-bold mb-0">Kamil Raza</h5>
                 </Card.Body>
               </Card>
             </Col>
