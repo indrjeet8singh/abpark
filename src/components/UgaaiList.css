@@ -103,12 +103,19 @@
 
 @media print {
 
-  /* A4 Landscape */
+  /* ===================================================
+     A4 LANDSCAPE
+  =================================================== */
+
   @page {
     size: A4 landscape;
     margin: 8mm;
   }
 
+
+  /* ===================================================
+     BODY
+  =================================================== */
 
   html,
   body {
@@ -120,22 +127,32 @@
   }
 
 
-  /* Hide everything */
+  /* ===================================================
+     HIDE EVERYTHING
+  =================================================== */
+
   body * {
     visibility: hidden !important;
   }
 
 
-  /* Show only print area */
+  /* ===================================================
+     SHOW ONLY PRINT AREA
+  =================================================== */
+
   .print-area,
   .print-area * {
     visibility: visible !important;
   }
 
 
-  /* Print container */
+  /* ===================================================
+     PRINT CONTAINER
+  =================================================== */
+
   .print-area {
     display: block !important;
+
     position: absolute !important;
 
     left: 0 !important;
@@ -147,6 +164,8 @@
     padding: 0 !important;
 
     background: #ffffff !important;
+
+    position: relative !important;
   }
 
 
@@ -157,11 +176,67 @@
 
 
   /* ===================================================
+     WATERMARK
+  =================================================== */
+
+  .print-watermark {
+    display: flex !important;
+
+    position: fixed !important;
+
+    top: 50% !important;
+    left: 50% !important;
+
+    width: 300px !important;
+    height: 300px !important;
+
+    transform: translate(-50%, -50%) !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    z-index: 0 !important;
+
+    pointer-events: none !important;
+  }
+
+
+  .print-watermark img {
+    display: block !important;
+
+    width: 300px !important;
+    height: 300px !important;
+
+    max-width: none !important;
+    max-height: none !important;
+
+    object-fit: contain !important;
+
+    opacity: 0.10 !important;
+  }
+
+
+  /* ===================================================
+     CONTENT ABOVE WATERMARK
+  =================================================== */
+
+  .print-header,
+  .print-meta,
+  .print-table,
+  .print-footer {
+    position: relative !important;
+
+    z-index: 1 !important;
+  }
+
+
+  /* ===================================================
      PRINT HEADER
   =================================================== */
 
   .print-header {
     display: flex !important;
+
     align-items: center !important;
     justify-content: space-between !important;
 
@@ -177,21 +252,27 @@
     margin-bottom: 10px;
 
     box-sizing: border-box;
+
+    background: transparent !important;
   }
 
 
-  /* Ambedkar */
+  /* ===================================================
+     AMBEDKAR IMAGE
+  =================================================== */
 
   .ambedkar-box {
     width: 110px;
     height: 95px;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
     overflow: hidden;
   }
+
 
   .ambedkar-photo {
     max-width: 100%;
@@ -201,7 +282,9 @@
   }
 
 
-  /* Center */
+  /* ===================================================
+     PRINT TITLE
+  =================================================== */
 
   .print-title {
     flex: 1;
@@ -210,6 +293,7 @@
 
     padding: 0 15px;
   }
+
 
   .print-title h1 {
     margin: 0;
@@ -221,6 +305,7 @@
     color: #003b73;
   }
 
+
   .print-title h2 {
     margin: 3px 0;
 
@@ -231,12 +316,11 @@
     color: #0066cc;
   }
 
+
   .print-title p {
     margin: 3px 0 0;
 
     font-size: 12px;
-
-    color: #333333;
   }
 
 
@@ -253,6 +337,7 @@
     align-items: center;
     justify-content: center;
   }
+
 
   .ashok-chakra {
     width: 90px;
@@ -281,7 +366,8 @@
 
     border: 1px solid #777;
 
-    background: #f3f6fa !important;
+    /* Transparent */
+    background: transparent !important;
 
     font-size: 11px;
 
@@ -305,24 +391,55 @@
     color: #000000;
 
     page-break-inside: auto;
+
+    background: transparent !important;
   }
 
 
+  /* ===================================================
+     TABLE ALL ELEMENTS TRANSPARENT
+  =================================================== */
+
+  .print-table,
+  .print-table thead,
+  .print-table tbody,
+  .print-table tfoot,
+  .print-table tr,
+  .print-table th,
+  .print-table td {
+    background: transparent !important;
+  }
+
+
+  /* ===================================================
+     TABLE HEADER GROUP
+  =================================================== */
+
   .print-table thead {
     display: table-header-group !important;
+
+    background: transparent !important;
   }
 
 
   .print-table tfoot {
     display: table-footer-group !important;
+
+    background: transparent !important;
   }
 
 
   .print-table tr {
     page-break-inside: avoid !important;
     page-break-after: auto !important;
+
+    background: transparent !important;
   }
 
+
+  /* ===================================================
+     TABLE CELLS
+  =================================================== */
 
   .print-table th,
   .print-table td {
@@ -337,28 +454,17 @@
     word-wrap: break-word;
 
     overflow-wrap: break-word;
+
+    background: transparent !important;
   }
 
 
-  /* Header */
+  /* ===================================================
+     TABLE HEADER
+  =================================================== */
 
   .print-table thead th {
-    background: #0066cc !important;
-
-    color: #ffffff !important;
-
-    font-weight: 700 !important;
-
-    -webkit-print-color-adjust: exact !important;
-
-    print-color-adjust: exact !important;
-  }
-
-
-  /* Footer */
-
-  .print-table tfoot th {
-    background: #e8eef5 !important;
+    background: transparent !important;
 
     color: #000000 !important;
 
@@ -371,8 +477,69 @@
 
 
   /* ===================================================
+     TABLE FOOTER
+  =================================================== */
+
+  .print-table tfoot th {
+    background: transparent !important;
+
+    color: #000000 !important;
+
+    font-weight: 700 !important;
+
+    -webkit-print-color-adjust: exact !important;
+
+    print-color-adjust: exact !important;
+  }
+
+
+  /* ===================================================
+     BOOTSTRAP STRIPED TABLE REMOVE
+  =================================================== */
+
+  .print-table.table-striped > tbody > tr:nth-of-type(odd) > *,
+  .print-table.table-striped > tbody > tr:nth-of-type(even) > * {
+    --bs-table-accent-bg: transparent !important;
+
+    background-color: transparent !important;
+
+    background: transparent !important;
+  }
+
+
+  /* ===================================================
+     BOOTSTRAP HOVER REMOVE
+  =================================================== */
+
+  .print-table.table-hover > tbody > tr:hover > * {
+    background-color: transparent !important;
+
+    background: transparent !important;
+  }
+
+
+  /* ===================================================
+     BOOTSTRAP TABLE DARK REMOVE
+  =================================================== */
+
+  .print-table .table-dark,
+  .print-table .table-dark th,
+  .print-table .table-dark td {
+    background: transparent !important;
+
+    color: #000000 !important;
+  }
+
+
+  /* ===================================================
      DECEASED
   =================================================== */
+
+  .print-deceased-row,
+  .print-deceased-row td {
+    background: transparent !important;
+  }
+
 
   .print-deceased-row td {
     color: #555555 !important;
@@ -399,6 +566,8 @@
     font-size: 10px;
 
     color: #333333;
+
+    background: transparent !important;
   }
 
 
@@ -416,10 +585,26 @@
   }
 
 
-  /* Bootstrap responsive wrapper should not interfere */
+  /* ===================================================
+     BOOTSTRAP RESPONSIVE WRAPPER
+  =================================================== */
 
   .table-responsive {
     overflow: visible !important;
+
+    background: transparent !important;
+  }
+
+
+  /* ===================================================
+     REMOVE CARD BACKGROUND
+  =================================================== */
+
+  .print-area .card,
+  .print-area .card-body {
+    background: transparent !important;
+
+    box-shadow: none !important;
   }
 }
 
