@@ -1,3 +1,4 @@
+
 /* =====================================================
    MAIN PAGE
 ===================================================== */
@@ -89,7 +90,7 @@
 
 
 /* =====================================================
-   PRINT AREA - HIDDEN ON SCREEN
+   PRINT AREA
 ===================================================== */
 
 .print-area {
@@ -104,12 +105,12 @@
 @media print {
 
   /* ===================================================
-     A4 LANDSCAPE
+     A4 PORTRAIT
   =================================================== */
 
   @page {
-    size: A4 landscape;
-    margin: 8mm;
+    size: A4 portrait;
+    margin: 10mm;
   }
 
 
@@ -120,10 +121,10 @@
   html,
   body {
     width: 100%;
-    height: auto;
+    min-height: 100%;
     margin: 0 !important;
     padding: 0 !important;
-    background: transparent !important;
+    background: white !important;
   }
 
 
@@ -147,8 +148,9 @@
 
 
   /* ===================================================
-     PRINT CONTAINER
-     IMPORTANT: ONLY RELATIVE
+     PRINT AREA
+     IMPORTANT:
+     watermark और table इसी container में रहेंगे
   =================================================== */
 
   .print-area {
@@ -156,10 +158,8 @@
 
     position: relative !important;
 
-    left: auto !important;
-    top: auto !important;
-
     width: 100% !important;
+    min-height: 100vh !important;
 
     margin: 0 !important;
     padding: 0 !important;
@@ -167,6 +167,10 @@
     background: transparent !important;
 
     box-shadow: none !important;
+
+    overflow: visible !important;
+
+    isolation: isolate !important;
   }
 
 
@@ -175,18 +179,26 @@
   =================================================== */
 
   .print-content {
-    width: 100% !important;
-    margin: 0 auto !important;
-
     position: relative !important;
-    z-index: 1 !important;
+
+    width: 100% !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
 
     background: transparent !important;
+
+    z-index: 2 !important;
   }
 
 
   /* ===================================================
      WATERMARK
+     
+     MAIN FIX:
+     absolute + high z-index
+     table से ऊपर
+     pointer-events none
   =================================================== */
 
   .print-watermark {
@@ -197,54 +209,43 @@
     top: 50% !important;
     left: 50% !important;
 
-    width: 300px !important;
-    height: 300px !important;
+    width: 320px !important;
+    height: 320px !important;
 
     transform: translate(-50%, -50%) !important;
 
     align-items: center !important;
     justify-content: center !important;
 
-    z-index: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+
+    z-index: 10 !important;
 
     pointer-events: none !important;
 
     background: transparent !important;
+
+    opacity: 1 !important;
   }
 
 
   .print-watermark img {
     display: block !important;
 
-    width: 300px !important;
-    height: 300px !important;
+    width: 320px !important;
+    height: 320px !important;
 
     max-width: none !important;
     max-height: none !important;
 
     object-fit: contain !important;
 
-    opacity: 0.15 !important;
-
-    background: transparent !important;
-  }
-
-
-  /* ===================================================
-     CONTENT ABOVE WATERMARK
-  =================================================== */
-
-  .print-header,
-  .print-meta,
-  .print-table,
-  .print-footer {
-    position: relative !important;
-
-    z-index: 1 !important;
+    opacity: 0.10 !important;
 
     background: transparent !important;
 
-    background-color: transparent !important;
+    border: none !important;
   }
 
 
@@ -253,101 +254,66 @@
   =================================================== */
 
   .print-header {
-    display: flex !important;
+    display: block !important;
 
-    align-items: center !important;
-    justify-content: space-between !important;
+    position: relative !important;
 
     width: 100% !important;
 
-    min-height: 110px;
+    margin: 0 0 10px 0 !important;
+    padding: 8px 15px !important;
 
-    padding: 8px 15px;
+    box-sizing: border-box !important;
 
-    border: 2px solid #0066cc;
-
-    border-radius: 8px;
-
-    margin-bottom: 10px;
-
-    box-sizing: border-box;
+    border: 2px solid #0066cc !important;
+    border-radius: 8px !important;
 
     background: transparent !important;
 
-    background-color: transparent !important;
+    z-index: 2 !important;
+
+    text-align: center !important;
   }
 
 
-  /* ===================================================
-     AMBEDKAR IMAGE BOX
-  =================================================== */
+  .print-header img {
+    width: 70px !important;
+    height: 70px !important;
 
-  .ambedkar-box {
-    width: 110px;
-    height: 95px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    overflow: hidden;
+    object-fit: contain !important;
 
     background: transparent !important;
   }
 
 
-  .ambedkar-photo {
-    max-width: 100%;
-    max-height: 95px;
+  .print-header h3 {
+    margin: 8px 0 4px !important;
 
-    object-fit: contain;
+    font-size: 24px !important;
 
-    background: transparent !important;
+    font-weight: 800 !important;
+
+    color: #003b73 !important;
   }
 
 
-  /* ===================================================
-     PRINT TITLE
-  =================================================== */
+  .print-header h5 {
+    margin: 3px 0 !important;
 
-  .print-title {
-    flex: 1;
+    font-size: 18px !important;
 
-    text-align: center;
+    font-weight: 700 !important;
 
-    padding: 0 15px;
-
-    background: transparent !important;
+    color: #0066cc !important;
   }
 
 
-  .print-title h1 {
-    margin: 0;
+  .print-header p {
+    margin: 3px 0 !important;
 
-    font-size: 28px;
+    font-size: 11px !important;
 
-    font-weight: 800;
-
-    color: #003b73;
-  }
-
-
-  .print-title h2 {
-    margin: 3px 0;
-
-    font-size: 20px;
-
-    font-weight: 700;
-
-    color: #0066cc;
-  }
-
-
-  .print-title p {
-    margin: 3px 0 0;
-
-    font-size: 12px;
+    color: #000 !important;
   }
 
 
@@ -355,26 +321,14 @@
      ASHOK CHAKRA
   =================================================== */
 
-  .chakra-box {
-    width: 105px;
-    height: 105px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    background: transparent !important;
-  }
-
-
   .ashok-chakra {
-    width: 90px;
-    height: 90px;
+    font-size: 35px !important;
 
-    display: block;
+    margin-top: 5px !important;
 
-    background: transparent !important;
+    line-height: 1 !important;
+
+    color: #003b73 !important;
   }
 
 
@@ -385,46 +339,54 @@
   .print-meta {
     display: flex !important;
 
-    justify-content: space-between !important;
+    position: relative !important;
 
+    justify-content: space-between !important;
     align-items: center !important;
 
     width: 100% !important;
 
-    padding: 7px 10px;
+    padding: 7px 10px !important;
 
-    margin-bottom: 10px;
+    margin-bottom: 10px !important;
 
-    border: 1px solid #777;
+    border: 1px solid #777 !important;
+
+    box-sizing: border-box !important;
 
     background: transparent !important;
 
-    background-color: transparent !important;
+    z-index: 2 !important;
 
-    font-size: 11px;
-
-    box-sizing: border-box;
+    font-size: 11px !important;
   }
 
 
   /* ===================================================
      TABLE WRAPPER
+     
+     IMPORTANT:
+     background transparent
+     z-index BELOW watermark
   =================================================== */
 
-  .table-responsive {
+  .print-area .table-responsive {
+    display: block !important;
+
+    position: relative !important;
+
     width: 100% !important;
 
     overflow: visible !important;
 
-    background: transparent !important;
+    margin: 0 !important;
+    padding: 0 !important;
 
-    background-color: transparent !important;
+    background: transparent !important;
 
     box-shadow: none !important;
 
-    position: relative !important;
-
-    z-index: 1 !important;
+    z-index: 2 !important;
   }
 
 
@@ -432,8 +394,13 @@
      PRINT TABLE
   =================================================== */
 
+  .print-area table,
   .print-table {
+    position: relative !important;
+
     width: 100% !important;
+
+    margin: 0 !important;
 
     border-collapse: collapse !important;
 
@@ -441,52 +408,45 @@
 
     table-layout: fixed !important;
 
-    font-size: 11px;
+    font-size: 11px !important;
 
-    color: #000000;
-
-    page-break-inside: auto;
+    color: #000 !important;
 
     background: transparent !important;
 
-    background-color: transparent !important;
-
     --bs-table-bg: transparent !important;
-
     --bs-table-striped-bg: transparent !important;
-
     --bs-table-hover-bg: transparent !important;
-
     --bs-table-accent-bg: transparent !important;
 
-    --bs-table-border-color: #000000 !important;
+    z-index: 2 !important;
+
+    page-break-inside: auto !important;
   }
 
 
   /* ===================================================
-     TABLE ALL ELEMENTS TRANSPARENT
+     TABLE ALL ELEMENTS
   =================================================== */
 
-  .print-table,
-  .print-table caption,
-  .print-table colgroup,
-  .print-table col,
-  .print-table thead,
-  .print-table tbody,
-  .print-table tfoot,
-  .print-table tr,
-  .print-table th,
-  .print-table td {
+  .print-area table,
+  .print-area table caption,
+  .print-area table colgroup,
+  .print-area table col,
+  .print-area table thead,
+  .print-area table tbody,
+  .print-area table tfoot,
+  .print-area table tr,
+  .print-area table th,
+  .print-area table td {
+
     background: transparent !important;
 
     background-color: transparent !important;
 
     --bs-table-bg: transparent !important;
-
     --bs-table-striped-bg: transparent !important;
-
     --bs-table-hover-bg: transparent !important;
-
     --bs-table-accent-bg: transparent !important;
   }
 
@@ -495,7 +455,7 @@
      TABLE HEADER
   =================================================== */
 
-  .print-table thead {
+  .print-area table thead {
     display: table-header-group !important;
 
     background: transparent !important;
@@ -504,16 +464,12 @@
   }
 
 
-  .print-table thead th {
+  .print-area table thead th {
     background: transparent !important;
 
-    background-color: transparent !important;
+    color: #000 !important;
 
-    color: #000000 !important;
-
-    font-weight: 700 !important;
-
-    border: 1px solid #000000 !important;
+    border: 1px solid #000 !important;
 
     padding: 5px 4px !important;
 
@@ -521,9 +477,7 @@
 
     vertical-align: middle !important;
 
-    -webkit-print-color-adjust: exact !important;
-
-    print-color-adjust: exact !important;
+    font-weight: 700 !important;
   }
 
 
@@ -531,14 +485,12 @@
      TABLE BODY
   =================================================== */
 
-  .print-table tbody {
+  .print-area table tbody {
     background: transparent !important;
-
-    background-color: transparent !important;
   }
 
 
-  .print-table tbody tr {
+  .print-area table tbody tr {
     background: transparent !important;
 
     background-color: transparent !important;
@@ -549,14 +501,14 @@
   }
 
 
-  .print-table tbody td {
+  .print-area table tbody td {
     background: transparent !important;
 
     background-color: transparent !important;
 
-    color: #000000 !important;
+    color: #000 !important;
 
-    border: 1px solid #000000 !important;
+    border: 1px solid #000 !important;
 
     padding: 5px 4px !important;
 
@@ -564,9 +516,9 @@
 
     vertical-align: middle !important;
 
-    word-wrap: break-word;
+    word-wrap: break-word !important;
 
-    overflow-wrap: break-word;
+    overflow-wrap: break-word !important;
   }
 
 
@@ -574,42 +526,40 @@
      TABLE FOOTER
   =================================================== */
 
-  .print-table tfoot {
+  .print-area table tfoot {
     display: table-footer-group !important;
 
     background: transparent !important;
-
-    background-color: transparent !important;
   }
 
 
-  .print-table tfoot tr,
-  .print-table tfoot th,
-  .print-table tfoot td {
+  .print-area table tfoot tr,
+  .print-area table tfoot th,
+  .print-area table tfoot td {
     background: transparent !important;
 
     background-color: transparent !important;
 
-    color: #000000 !important;
+    color: #000 !important;
 
-    border: 1px solid #000000 !important;
+    border: 1px solid #000 !important;
 
     font-weight: 700 !important;
   }
 
 
   /* ===================================================
-     REMOVE BOOTSTRAP STRIPED BACKGROUND
+     REMOVE BOOTSTRAP STRIPED
   =================================================== */
 
-  .print-table.table-striped > tbody > tr:nth-of-type(odd) > *,
-  .print-table.table-striped > tbody > tr:nth-of-type(even) > * {
+  .print-area table.table-striped > tbody > tr:nth-of-type(odd) > *,
+  .print-area table.table-striped > tbody > tr:nth-of-type(even) > * {
+
     background: transparent !important;
 
     background-color: transparent !important;
 
     --bs-table-accent-bg: transparent !important;
-
     --bs-table-striped-bg: transparent !important;
   }
 
@@ -618,8 +568,9 @@
      REMOVE BOOTSTRAP HOVER
   =================================================== */
 
-  .print-table.table-hover > tbody > tr:hover > *,
-  .print-table.table-hover > tbody > tr:hover {
+  .print-area table.table-hover > tbody > tr:hover > *,
+  .print-area table.table-hover > tbody > tr:hover {
+
     background: transparent !important;
 
     background-color: transparent !important;
@@ -629,36 +580,38 @@
 
 
   /* ===================================================
-     REMOVE BOOTSTRAP TABLE-DARK
+     TABLE DARK
   =================================================== */
 
-  .print-table .table-dark,
-  .print-table .table-dark th,
-  .print-table .table-dark td,
-  .print-table thead.table-dark,
-  .print-table thead.table-dark th {
+  .print-area .table-dark,
+  .print-area .table-dark th,
+  .print-area .table-dark td,
+  .print-area thead.table-dark,
+  .print-area thead.table-dark th {
+
     background: transparent !important;
 
     background-color: transparent !important;
 
-    color: #000000 !important;
+    color: #000 !important;
 
     --bs-table-bg: transparent !important;
   }
 
 
   /* ===================================================
-     REMOVE BOOTSTRAP TABLE-LIGHT
+     TABLE LIGHT
   =================================================== */
 
-  .print-table .table-light,
-  .print-table .table-light th,
-  .print-table .table-light td {
+  .print-area .table-light,
+  .print-area .table-light th,
+  .print-area .table-light td {
+
     background: transparent !important;
 
     background-color: transparent !important;
 
-    color: #000000 !important;
+    color: #000 !important;
 
     --bs-table-bg: transparent !important;
   }
@@ -670,51 +623,60 @@
 
   .print-deceased-row,
   .print-deceased-row th,
-  .print-deceased-row td {
+  .print-deceased-row td,
+  .deceased-row,
+  .deceased-row th,
+  .deceased-row td {
+
     background: transparent !important;
 
     background-color: transparent !important;
   }
 
 
-  .print-deceased-row td {
-    color: #555555 !important;
+  .print-deceased-row td,
+  .deceased-row td {
+
+    color: #555 !important;
 
     text-decoration: line-through !important;
   }
 
 
   /* ===================================================
-     PRINT FOOTER
+     FOOTER
   =================================================== */
 
   .print-footer {
     display: flex !important;
 
+    position: relative !important;
+
     justify-content: space-between !important;
 
     align-items: center !important;
 
-    margin-top: 10px;
+    margin-top: 10px !important;
 
-    padding-top: 7px;
+    padding-top: 7px !important;
 
-    border-top: 1px solid #333;
+    border-top: 1px solid #333 !important;
 
-    font-size: 10px;
+    font-size: 10px !important;
 
-    color: #333333;
+    color: #333 !important;
 
     background: transparent !important;
 
-    background-color: transparent !important;
+    z-index: 2 !important;
   }
 
 
   /* ===================================================
-     REMOVE SCREEN ELEMENTS
+     HIDE ACTIONS / SCREEN ELEMENTS
   =================================================== */
 
+  .no-print,
   .print-hide,
   button,
   .pagination,
@@ -733,11 +695,14 @@
   .print-area .card-body,
   .print-area .card-header,
   .print-area .card-footer {
+
     background: transparent !important;
 
     background-color: transparent !important;
 
     box-shadow: none !important;
+
+    border: none !important;
   }
 
 
@@ -750,6 +715,7 @@
   .print-area .bg-dark,
   .print-area .bg-primary,
   .print-area .bg-secondary {
+
     background: transparent !important;
 
     background-color: transparent !important;
@@ -757,7 +723,22 @@
 
 
   /* ===================================================
-     PRINT COLOR
+     IMPORTANT:
+     WATERMARK MUST STAY ABOVE TABLE
+  =================================================== */
+
+  .print-watermark {
+    z-index: 100 !important;
+  }
+
+  .print-area .table-responsive,
+  .print-area table {
+    z-index: 2 !important;
+  }
+
+
+  /* ===================================================
+     PRINT COLORS
   =================================================== */
 
   * {
@@ -797,3 +778,62 @@
     font-size: 12px;
   }
 }
+```
+
+### React में एक जरूरी बदलाव
+
+आपके JSX में अभी table का class `print-table` नहीं है। इसे बदलकर यह करें:
+
+```jsx
+<Table
+  bordered
+  hover
+  striped
+  className="print-table align-middle mb-0"
+>
+```
+
+और **सबसे जरूरी बात:** आपके React component के बिल्कुल नीचे जो यह पूरा हिस्सा है:
+
+```jsx
+{/* PRINT CSS */}
+<style>
+  {`
+    ...
+  `}
+</style>
+```
+
+**उसे पूरा delete कर दें।**
+
+क्योंकि वही दूसरा `@media print` आपके ऊपर वाले CSS को override कर रहा है।
+
+अब structure यही रहेगा:
+
+```jsx
+<div ref={printRef} className="print-area">
+
+  <div className="print-watermark">
+    <img
+      src="https://i.ibb.co/qLBLDyLT/Parkwater-Mark.png"
+      alt="Ambedkar Park Watermark"
+    />
+  </div>
+
+  <div className="print-header">
+    ...
+  </div>
+
+  <div className="table-responsive">
+    <Table
+      bordered
+      hover
+      striped
+      className="print-table align-middle mb-0"
+    >
+      ...
+    </Table>
+  </div>
+
+</div>
+
