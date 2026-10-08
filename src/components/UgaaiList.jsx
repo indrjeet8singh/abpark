@@ -1398,442 +1398,594 @@ const UgaaiList = () => {
               <div className="print-header text-center mb-3">
 
                 <img
-                  src="https://i.ibb.co/qLBLDyLT/Parkwater-Mark.png"
-                  alt="Ambedkar Park"
-                  style={{
-                    width: "70px",
-                    height: "70px",
-                    objectFit: "contain",
-                  }}
-                />
-
-                <h3 className="mt-2 mb-1">
-                  अम्बेडकर पार्क गंगाचौली
-                </h3>
-
-                <h5>
-                  Ugaai List - {selectedYear}
-                </h5>
-
-                <p className="mb-2">
-                  कुल Record: {ugaaiData.length} |
-                  कुल राशि: ₹{" "}
-                  {totalAmount.toLocaleString("en-IN")}
-                </p>
-
-                <div className="ashok-chakra">
-                  ☸
-                </div>
-
-              </div>
-
-              {/* ================================= */}
-              {/* LOADING */}
-              {/* ================================= */}
-
-              {loading ? (
-                <div className="text-center py-5">
-                  <Spinner animation="border" />
-
-                  <p className="mt-2">
-                    {selectedYear} की list load हो रही है...
-                  </p>
-                </div>
-              ) : ugaaiData.length === 0 ? (
-
-                <div className="text-center py-5">
-
-                  <h5>
-                    {selectedYear} की Ugaai List में
-                    कोई record नहीं है।
-                  </h5>
-
-                  <p className="text-muted">
-                    आप इस वर्ष के लिए नया record
-                    Upload कर सकते हैं।
-                  </p>
-
-                </div>
-
-              ) : (
-
-                <div className="table-responsive">
-
-                  <Table
-                    bordered
-                    hover
-                    striped
-                    className="align-middle mb-0"
-                  >
-
-                    <thead className="table-dark">
-
-                      <tr>
-                        <th>#</th>
-                        <th>दिनांक</th>
-                        <th>नाम</th>
-                        <th>पिता का नाम</th>
-                        <th>राशि</th>
-                        <th>टिप्पणी</th>
-                        <th>स्थिति</th>
-                        <th className="no-print">
-                          Action
-                        </th>
-                      </tr>
-
-                    </thead>
-
-                    <tbody>
-
-                      {ugaaiData.map((item, index) => {
-
-                        const isDeceased =
-                          item.status === "deceased";
-
-                        return (
-
-                          <tr
-                            key={item._id}
-                            className={
-                              isDeceased
-                                ? "table-secondary deceased-row"
-                                : ""
-                            }
-                          >
-
-                            <td>
-                              {index + 1}
-                            </td>
-
-                            <td>
-                              {item.date || "-"}
-                            </td>
-
-                            <td>
-                              <strong>
-                                {item.name}
-                              </strong>
-                            </td>
-
-                            <td>
-                              {item.fname || "-"}
-                            </td>
-
-                            <td
-                              className={getAmountClass(
-                                item.amount
-                              )}
-                            >
-                              ₹{" "}
-                              {Number(
-                                item.amount || 0
-                              ).toLocaleString("en-IN")}
-                            </td>
-
-                            <td>
-                              {item.remark || "-"}
-                            </td>
-
-                            <td>
-
-                              {isDeceased ? (
-
-                                <Badge bg="secondary">
-                                  Deceased
-                                </Badge>
-
-                              ) : (
-
-                                <Badge bg="success">
-                                  Active
-                                </Badge>
-
-                              )}
-
-                            </td>
-
-                            <td className="no-print">
-
-                              <div className="d-flex gap-2">
-
-                                <Button
-                                  size="sm"
-                                  variant="outline-primary"
-                                  onClick={() =>
-                                    handleEdit(item)
-                                  }
-                                >
-                                  <FaEdit />
-                                </Button>
-
-                                <Button
-                                  size="sm"
-                                  variant="outline-danger"
-                                  onClick={() =>
-                                    handleDelete(
-                                      item._id
-                                    )
-                                  }
-                                >
-                                  <FaTrash />
-                                </Button>
-
-                              </div>
-
-                            </td>
-
-                          </tr>
-
-                        );
-                      })}
-
-                    </tbody>
-
-                    {/* TOTAL */}
-
-                    <tfoot>
-
-                      <tr className="table-light fw-bold">
-
-                        <td
-                          colSpan="4"
-                          className="text-end"
-                        >
-                          कुल राशि
-                        </td>
-
-                        <td>
-                          ₹{" "}
-                          {totalAmount.toLocaleString(
-                            "en-IN"
-                          )}
-                        </td>
-
-                        <td colSpan="3"></td>
-
-                      </tr>
-
-                    </tfoot>
-
-                  </Table>
-
-                </div>
-
-              )}
-
-            </div>
-
-          </Card.Body>
-        </Card>
-
-      </Container>
-
-      {/* ================================= */}
-      {/* EDIT MODAL */}
-      {/* ================================= */}
-
-      <Modal
-        show={showEditModal}
-        onHide={() => setShowEditModal(false)}
-        centered
-        size="lg"
-      >
-
-        <Modal.Header closeButton>
-
-          <Modal.Title>
-            Ugaai Record Edit करें
-          </Modal.Title>
-
-        </Modal.Header>
-
-        <Modal.Body>
-
-          <Row>
-
-            {/* YEAR */}
-
-            <Col md={6} className="mb-3">
-
-              <Form.Label>
-                वर्ष
-              </Form.Label>
-
-              <Form.Select
-                name="year"
-                value={editData.year}
-                onChange={handleEditChange}
-              >
-
-                {Array.from(
-                  {
-                    length: 11,
-                  },
-                  (_, index) =>
-                    currentYear - 5 + index
-                ).map((year) => (
-
-                  <option
-                    key={year}
-                    value={year}
-                  >
-                    {year}
-                  </option>
-
-                ))}
-
-              </Form.Select>
-
-            </Col>
-
-            {/* DATE */}
-
-            <Col md={6} className="mb-3">
-
-              <Form.Label>
-                दिनांक
-              </Form.Label>
-
-              <Form.Control
-                type="date"
-                name="date"
-                value={editData.date}
-                onChange={handleEditChange}
-              />
-
-            </Col>
-
-            {/* NAME */}
-
-            <Col md={6} className="mb-3">
-
-              <Form.Label>
-                नाम
-              </Form.Label>
-
-              <Form.Control
-                type="text"
-                name="name"
-                value={editData.name}
-                onChange={handleEditChange}
-              />
-
-            </Col>
-
-            {/* FATHER NAME */}
-
-            <Col md={6} className="mb-3">
-
-              <Form.Label>
-                पिता का नाम
-              </Form.Label>
-
-              <Form.Control
-                type="text"
-                name="fname"
-                value={editData.fname}
-                onChange={handleEditChange}
-              />
-
-            </Col>
-
-            {/* AMOUNT */}
-
-            <Col md={6} className="mb-3">
-
-              <Form.Label>
-                राशि
-              </Form.Label>
-
-              <Form.Control
-                type="number"
-                min="0"
-                name="amount"
-                value={editData.amount}
-                onChange={handleEditChange}
-              />
-
-            </Col>
-
-            {/* STATUS */}
-
-            <Col md={6} className="mb-3">
-
-              <Form.Label>
-                स्थिति
-              </Form.Label>
-
-              <Form.Select
-                name="status"
-                value={editData.status}
-                onChange={handleEditChange}
-              >
-
-                <option value="active">
-                  Active
-                </option>
-
-                <option value="deceased">
-                  Deceased
-                </option>
-
-              </Form.Select>
-
-            </Col>
-
-            {/* REMARK */}
-
-            <Col md={12} className="mb-3">
-
-              <Form.Label>
-                टिप्पणी
-              </Form.Label>
-
-              <Form.Control
-                as="textarea"
-                rows={3}
-                name="remark"
-                value={editData.remark}
-                onChange={handleEditChange}
-              />
-
-            </Col>
-
-          </Row>
-
-        </Modal.Body>
-
-        <Modal.Footer>
-
-          <Button
-            variant="secondary"
-            onClick={() =>
-              setShowEditModal(false)
-            }
-          >
-            Cancel
-          </Button>
-
-          <Button
-            variant="primary"
-            onClick={handleUpdate}
-          >
-            Update
-          </Button>
-
-        </Modal.Footer>
-
-      </Modal>
-
-      {/* ================================= */}
-      {/* PRINT CSS */}
-      {/* ================================= */}
-
-    </>
-  );
-};
-
-export default UgaaiList;
-
-
-
+                  src="https://i.ibb.co/qLBLDyLT/Parkwater-Mark.png" 
+                  alt="Ambedkar Park" 
+                  style={{ 
+                    width: "70px", 
+                    height: "70px", 
+                    objectFit: "contain", 
+                  }} 
+                /> 
+ 
+                <h3 className="mt-2 mb-1"> 
+                  अम्बेडकर पार्क गंगाचौली 
+                </h3> 
+ 
+                <h5> 
+                  Ugaai List - {selectedYear} 
+                </h5> 
+ 
+                <p className="mb-2"> 
+                  कुल Record: {ugaaiData.length} | 
+                  कुल राशि: ₹{" "} 
+                  {totalAmount.toLocaleString("en-IN")} 
+                </p> 
+ 
+                <div className="ashok-chakra"> 
+                  ☸ 
+                </div> 
+ 
+              </div> 
+ 
+              {/* ================================= */} 
+              {/* LOADING */} 
+              {/* ================================= */} 
+ 
+              {loading ? ( 
+                <div className="text-center py-5"> 
+                  <Spinner animation="border" /> 
+ 
+                  <p className="mt-2"> 
+                    {selectedYear} की list load हो रही है... 
+                  </p> 
+                </div> 
+              ) : ugaaiData.length === 0 ? ( 
+ 
+                <div className="text-center py-5"> 
+ 
+                  <h5> 
+                    {selectedYear} की Ugaai List में 
+                    कोई record नहीं है। 
+                  </h5> 
+ 
+                  <p className="text-muted"> 
+                    आप इस वर्ष के लिए नया record 
+                    Upload कर सकते हैं। 
+                  </p> 
+ 
+                </div> 
+ 
+              ) : ( 
+ 
+                <div className="table-responsive"> 
+ 
+                  <Table 
+                    bordered 
+                    hover 
+                    striped 
+                    className="align-middle mb-0" 
+                  > 
+ 
+                    <thead className="table-dark"> 
+ 
+                      <tr> 
+                        <th>#</th> 
+                        <th>दिनांक</th> 
+                        <th>नाम</th> 
+                        <th>पिता का नाम</th> 
+                        <th>राशि</th> 
+                        <th>टिप्पणी</th> 
+                        <th>स्थिति</th> 
+                        <th className="no-print"> 
+                          Action 
+                        </th> 
+                      </tr> 
+ 
+                    </thead> 
+ 
+                    <tbody> 
+ 
+                      {ugaaiData.map((item, index) => { 
+ 
+                        const isDeceased = 
+                          item.status === "deceased"; 
+ 
+                        return ( 
+ 
+                          <tr 
+                            key={item._id} 
+                            className={ 
+                              isDeceased 
+                                ? "table-secondary deceased-row" 
+                                : "" 
+                            } 
+                          > 
+ 
+                            <td> 
+                              {index + 1} 
+                            </td> 
+ 
+                            <td> 
+                              {item.date || "-"} 
+                            </td> 
+ 
+                            <td> 
+                              <strong> 
+                                {item.name} 
+                              </strong> 
+                            </td> 
+ 
+                            <td> 
+                              {item.fname || "-"} 
+                            </td> 
+ 
+                            <td 
+                              className={getAmountClass( 
+                                item.amount 
+                              )} 
+                            > 
+                              ₹{" "} 
+                              {Number( 
+                                item.amount || 0 
+                              ).toLocaleString("en-IN")} 
+                            </td> 
+ 
+                            <td> 
+                              {item.remark || "-"} 
+                            </td> 
+ 
+                            <td> 
+ 
+                              {isDeceased ? ( 
+ 
+                                <Badge bg="secondary"> 
+                                  Deceased 
+                                </Badge> 
+ 
+                              ) : ( 
+ 
+                                <Badge bg="success"> 
+                                  Active 
+                                </Badge> 
+ 
+                              )} 
+ 
+                            </td> 
+ 
+                            <td className="no-print"> 
+ 
+                              <div className="d-flex gap-2"> 
+ 
+                                <Button 
+                                  size="sm" 
+                                  variant="outline-primary" 
+                                  onClick={() => 
+                                    handleEdit(item) 
+                                  } 
+                                > 
+                                  <FaEdit /> 
+                                </Button> 
+ 
+                                <Button 
+                                  size="sm" 
+                                  variant="outline-danger" 
+                                  onClick={() => 
+                                    handleDelete( 
+                                      item._id 
+                                    ) 
+                                  } 
+                                > 
+                                  <FaTrash /> 
+                                </Button> 
+ 
+                              </div> 
+ 
+                            </td> 
+ 
+                          </tr> 
+ 
+                        ); 
+                      })} 
+ 
+                    </tbody> 
+ 
+                    {/* TOTAL */} 
+ 
+                    <tfoot> 
+ 
+                      <tr className="table-light fw-bold"> 
+ 
+                        <td 
+                          colSpan="4" 
+                          className="text-end" 
+                        > 
+                          कुल राशि 
+                        </td> 
+ 
+                        <td> 
+                          ₹{" "} 
+                          {totalAmount.toLocaleString( 
+                            "en-IN" 
+                          )} 
+                        </td> 
+ 
+                        <td colSpan="3"></td> 
+ 
+                      </tr> 
+ 
+                    </tfoot> 
+ 
+                  </Table> 
+ 
+                </div> 
+ 
+              )} 
+ 
+            </div> 
+ 
+          </Card.Body> 
+        </Card> 
+ 
+      </Container> 
+ 
+      {/* ================================= */} 
+      {/* EDIT MODAL */} 
+      {/* ================================= */} 
+ 
+      <Modal 
+        show={showEditModal} 
+        onHide={() => setShowEditModal(false)} 
+        centered 
+        size="lg" 
+      > 
+ 
+        <Modal.Header closeButton> 
+ 
+          <Modal.Title> 
+            Ugaai Record Edit करें 
+          </Modal.Title> 
+ 
+        </Modal.Header> 
+ 
+        <Modal.Body> 
+ 
+          <Row> 
+ 
+            {/* YEAR */} 
+ 
+            <Col md={6} className="mb-3"> 
+ 
+              <Form.Label> 
+                वर्ष 
+              </Form.Label> 
+ 
+              <Form.Select 
+                name="year" 
+                value={editData.year} 
+                onChange={handleEditChange} 
+              > 
+ 
+                {Array.from( 
+                  { 
+                    length: 11, 
+                  }, 
+                  (_, index) => 
+                    currentYear - 5 + index 
+                ).map((year) => ( 
+ 
+                  <option 
+                    key={year} 
+                    value={year} 
+                  > 
+                    {year} 
+                  </option> 
+ 
+                ))} 
+ 
+              </Form.Select> 
+ 
+            </Col> 
+ 
+            {/* DATE */} 
+ 
+            <Col md={6} className="mb-3"> 
+ 
+              <Form.Label> 
+                दिनांक 
+              </Form.Label> 
+ 
+              <Form.Control 
+                type="date" 
+                name="date" 
+                value={editData.date} 
+                onChange={handleEditChange} 
+              /> 
+ 
+            </Col> 
+ 
+            {/* NAME */} 
+ 
+            <Col md={6} className="mb-3"> 
+ 
+              <Form.Label> 
+                नाम 
+              </Form.Label> 
+ 
+              <Form.Control 
+                type="text" 
+                name="name" 
+                value={editData.name} 
+                onChange={handleEditChange} 
+              /> 
+ 
+            </Col> 
+ 
+            {/* FATHER NAME */} 
+ 
+            <Col md={6} className="mb-3"> 
+ 
+              <Form.Label> 
+                पिता का नाम 
+              </Form.Label> 
+ 
+              <Form.Control 
+                type="text" 
+                name="fname" 
+                value={editData.fname} 
+                onChange={handleEditChange} 
+              /> 
+ 
+            </Col> 
+ 
+            {/* AMOUNT */} 
+ 
+            <Col md={6} className="mb-3"> 
+ 
+              <Form.Label> 
+                राशि 
+              </Form.Label> 
+ 
+              <Form.Control 
+                type="number" 
+                min="0" 
+                name="amount" 
+                value={editData.amount} 
+                onChange={handleEditChange} 
+              /> 
+ 
+            </Col> 
+ 
+            {/* STATUS */} 
+ 
+            <Col md={6} className="mb-3"> 
+ 
+              <Form.Label> 
+                स्थिति 
+              </Form.Label> 
+ 
+              <Form.Select 
+                name="status" 
+                value={editData.status} 
+                onChange={handleEditChange} 
+              > 
+ 
+                <option value="active"> 
+                  Active 
+                </option> 
+ 
+                <option value="deceased"> 
+                  Deceased 
+                </option> 
+ 
+              </Form.Select> 
+ 
+            </Col> 
+ 
+            {/* REMARK */} 
+ 
+            <Col md={12} className="mb-3"> 
+ 
+              <Form.Label> 
+                टिप्पणी 
+              </Form.Label> 
+ 
+              <Form.Control 
+                as="textarea" 
+                rows={3} 
+                name="remark" 
+                value={editData.remark} 
+                onChange={handleEditChange} 
+              /> 
+ 
+            </Col> 
+ 
+          </Row> 
+ 
+        </Modal.Body> 
+ 
+        <Modal.Footer> 
+ 
+          <Button 
+            variant="secondary" 
+            onClick={() => 
+              setShowEditModal(false) 
+            } 
+          > 
+            Cancel 
+          </Button> 
+ 
+          <Button 
+            variant="primary" 
+            onClick={handleUpdate} 
+          > 
+            Update 
+          </Button> 
+ 
+        </Modal.Footer> 
+ 
+      </Modal> 
+ 
+      {/* ================================= */} 
+      {/* PRINT CSS */} 
+      {/* ================================= */} 
+ 
+      <style> 
+        {` 
+ 
+          /* ========================================== 
+             NORMAL SCREEN 
+          ========================================== */ 
+ 
+          .print-watermark { 
+            display: none; 
+          } 
+ 
+          .print-header { 
+            display: none; 
+          } 
+ 
+          .deceased-row { 
+            opacity: 0.75; 
+          } 
+ 
+ 
+          /* ========================================== 
+             PRINT 
+          ========================================== */ 
+ 
+          @media print { 
+ 
+            body { 
+              background: white !important; 
+            } 
+ 
+            .no-print { 
+              display: none !important; 
+            } 
+ 
+            .print-area { 
+              position: relative; 
+            } 
+ 
+            /* ------------------------------------------ 
+               CENTER WATERMARK 
+               300px x 300px 
+            ------------------------------------------ */ 
+ 
+            .print-watermark { 
+              display: flex !important; 
+ 
+              position: fixed; 
+ 
+              top: 50%; 
+              left: 50%; 
+ 
+              width: 300px; 
+              height: 300px; 
+ 
+              transform: translate( 
+                -50%, 
+                -50% 
+              ); 
+ 
+              justify-content: center; 
+              align-items: center; 
+ 
+              z-index: 0; 
+ 
+              pointer-events: none; 
+            } 
+ 
+            .print-watermark img { 
+              width: 300px !important; 
+              height: 300px !important; 
+ 
+              object-fit: contain; 
+ 
+              opacity: 0.10; 
+            } 
+ 
+            /* ------------------------------------------ 
+               PRINT CONTENT ABOVE WATERMARK 
+            ------------------------------------------ */ 
+ 
+            .print-header, 
+            .print-area table, 
+            .print-area .table-responsive { 
+              position: relative; 
+              z-index: 1; 
+            } 
+ 
+            .print-header { 
+              display: block !important; 
+            } 
+ 
+            .card { 
+              border: none !important; 
+              box-shadow: none !important; 
+            } 
+ 
+            table { 
+              width: 100% !important; 
+              font-size: 12px !important; 
+            } 
+ 
+            .table-responsive { 
+              overflow: visible !important; 
+            } 
+ 
+            @page { 
+              size: A4 portrait; 
+              margin: 10mm; 
+            } 
+ 
+            .ashok-chakra { 
+              font-size: 35px; 
+              margin-top: 5px; 
+            } 
+ 
+            .deceased-row { 
+              background: #eeeeee !important; 
+ 
+              -webkit-print-color-adjust: exact; 
+              print-color-adjust: exact; 
+            } 
+ 
+          } 
+ 
+ 
+          /* ========================================== 
+             MOBILE 
+          ========================================== */ 
+ 
+          @media (max-width: 767px) { 
+ 
+            .container-fluid { 
+              padding-left: 8px !important; 
+              padding-right: 8px !important; 
+            } 
+ 
+            h3 { 
+              font-size: 22px; 
+            } 
+ 
+            .table { 
+              font-size: 13px; 
+              white-space: nowrap; 
+            } 
+ 
+            .table td, 
+            .table th { 
+              padding: 7px; 
+            } 
+ 
+          } 
+ 
+        `} 
+      </style> 
+ 
+    </> 
+  ); 
+}; 
+ 
+export default UgaaiList; 
