@@ -89,7 +89,7 @@
 
 
 /* =====================================================
-   PRINT AREA - SCREEN
+   PRINT AREA - HIDDEN ON SCREEN
 ===================================================== */
 
 .print-area {
@@ -123,7 +123,7 @@
     height: auto;
     margin: 0 !important;
     padding: 0 !important;
-    background: #ffffff !important;
+    background: transparent !important;
   }
 
 
@@ -137,7 +137,7 @@
 
 
   /* ===================================================
-     SHOW ONLY PRINT AREA
+     SHOW PRINT AREA
   =================================================== */
 
   .print-area,
@@ -148,30 +148,40 @@
 
   /* ===================================================
      PRINT CONTAINER
+     IMPORTANT: ONLY RELATIVE
   =================================================== */
 
   .print-area {
     display: block !important;
 
-    position: absolute !important;
+    position: relative !important;
 
-    left: 0 !important;
-    top: 0 !important;
+    left: auto !important;
+    top: auto !important;
 
     width: 100% !important;
 
     margin: 0 !important;
     padding: 0 !important;
 
-    background: #ffffff !important;
+    background: transparent !important;
 
-    position: relative !important;
+    box-shadow: none !important;
   }
 
+
+  /* ===================================================
+     PRINT CONTENT
+  =================================================== */
 
   .print-content {
     width: 100% !important;
     margin: 0 auto !important;
+
+    position: relative !important;
+    z-index: 1 !important;
+
+    background: transparent !important;
   }
 
 
@@ -182,7 +192,7 @@
   .print-watermark {
     display: flex !important;
 
-    position: fixed !important;
+    position: absolute !important;
 
     top: 50% !important;
     left: 50% !important;
@@ -198,6 +208,8 @@
     z-index: 0 !important;
 
     pointer-events: none !important;
+
+    background: transparent !important;
   }
 
 
@@ -212,7 +224,9 @@
 
     object-fit: contain !important;
 
-    opacity: 0.10 !important;
+    opacity: 0.15 !important;
+
+    background: transparent !important;
   }
 
 
@@ -227,6 +241,10 @@
     position: relative !important;
 
     z-index: 1 !important;
+
+    background: transparent !important;
+
+    background-color: transparent !important;
   }
 
 
@@ -240,13 +258,14 @@
     align-items: center !important;
     justify-content: space-between !important;
 
-    width: 100%;
+    width: 100% !important;
 
     min-height: 110px;
 
     padding: 8px 15px;
 
     border: 2px solid #0066cc;
+
     border-radius: 8px;
 
     margin-bottom: 10px;
@@ -254,11 +273,13 @@
     box-sizing: border-box;
 
     background: transparent !important;
+
+    background-color: transparent !important;
   }
 
 
   /* ===================================================
-     AMBEDKAR IMAGE
+     AMBEDKAR IMAGE BOX
   =================================================== */
 
   .ambedkar-box {
@@ -271,6 +292,8 @@
     justify-content: center;
 
     overflow: hidden;
+
+    background: transparent !important;
   }
 
 
@@ -279,6 +302,8 @@
     max-height: 95px;
 
     object-fit: contain;
+
+    background: transparent !important;
   }
 
 
@@ -292,6 +317,8 @@
     text-align: center;
 
     padding: 0 15px;
+
+    background: transparent !important;
   }
 
 
@@ -336,6 +363,8 @@
 
     align-items: center;
     justify-content: center;
+
+    background: transparent !important;
   }
 
 
@@ -344,11 +373,13 @@
     height: 90px;
 
     display: block;
+
+    background: transparent !important;
   }
 
 
   /* ===================================================
-     META
+     PRINT META
   =================================================== */
 
   .print-meta {
@@ -358,7 +389,7 @@
 
     align-items: center !important;
 
-    width: 100%;
+    width: 100% !important;
 
     padding: 7px 10px;
 
@@ -366,12 +397,34 @@
 
     border: 1px solid #777;
 
-    /* Transparent */
     background: transparent !important;
+
+    background-color: transparent !important;
 
     font-size: 11px;
 
     box-sizing: border-box;
+  }
+
+
+  /* ===================================================
+     TABLE WRAPPER
+  =================================================== */
+
+  .table-responsive {
+    width: 100% !important;
+
+    overflow: visible !important;
+
+    background: transparent !important;
+
+    background-color: transparent !important;
+
+    box-shadow: none !important;
+
+    position: relative !important;
+
+    z-index: 1 !important;
   }
 
 
@@ -384,7 +437,9 @@
 
     border-collapse: collapse !important;
 
-    table-layout: fixed;
+    border-spacing: 0 !important;
+
+    table-layout: fixed !important;
 
     font-size: 11px;
 
@@ -393,6 +448,18 @@
     page-break-inside: auto;
 
     background: transparent !important;
+
+    background-color: transparent !important;
+
+    --bs-table-bg: transparent !important;
+
+    --bs-table-striped-bg: transparent !important;
+
+    --bs-table-hover-bg: transparent !important;
+
+    --bs-table-accent-bg: transparent !important;
+
+    --bs-table-border-color: #000000 !important;
   }
 
 
@@ -401,6 +468,9 @@
   =================================================== */
 
   .print-table,
+  .print-table caption,
+  .print-table colgroup,
+  .print-table col,
   .print-table thead,
   .print-table tbody,
   .print-table tfoot,
@@ -408,41 +478,84 @@
   .print-table th,
   .print-table td {
     background: transparent !important;
+
+    background-color: transparent !important;
+
+    --bs-table-bg: transparent !important;
+
+    --bs-table-striped-bg: transparent !important;
+
+    --bs-table-hover-bg: transparent !important;
+
+    --bs-table-accent-bg: transparent !important;
   }
 
 
   /* ===================================================
-     TABLE HEADER GROUP
+     TABLE HEADER
   =================================================== */
 
   .print-table thead {
     display: table-header-group !important;
 
     background: transparent !important;
+
+    background-color: transparent !important;
   }
 
 
-  .print-table tfoot {
-    display: table-footer-group !important;
-
+  .print-table thead th {
     background: transparent !important;
-  }
 
+    background-color: transparent !important;
 
-  .print-table tr {
-    page-break-inside: avoid !important;
-    page-break-after: auto !important;
+    color: #000000 !important;
 
-    background: transparent !important;
+    font-weight: 700 !important;
+
+    border: 1px solid #000000 !important;
+
+    padding: 5px 4px !important;
+
+    text-align: center !important;
+
+    vertical-align: middle !important;
+
+    -webkit-print-color-adjust: exact !important;
+
+    print-color-adjust: exact !important;
   }
 
 
   /* ===================================================
-     TABLE CELLS
+     TABLE BODY
   =================================================== */
 
-  .print-table th,
-  .print-table td {
+  .print-table tbody {
+    background: transparent !important;
+
+    background-color: transparent !important;
+  }
+
+
+  .print-table tbody tr {
+    background: transparent !important;
+
+    background-color: transparent !important;
+
+    page-break-inside: avoid !important;
+
+    page-break-after: auto !important;
+  }
+
+
+  .print-table tbody td {
+    background: transparent !important;
+
+    background-color: transparent !important;
+
+    color: #000000 !important;
+
     border: 1px solid #000000 !important;
 
     padding: 5px 4px !important;
@@ -454,25 +567,6 @@
     word-wrap: break-word;
 
     overflow-wrap: break-word;
-
-    background: transparent !important;
-  }
-
-
-  /* ===================================================
-     TABLE HEADER
-  =================================================== */
-
-  .print-table thead th {
-    background: transparent !important;
-
-    color: #000000 !important;
-
-    font-weight: 700 !important;
-
-    -webkit-print-color-adjust: exact !important;
-
-    print-color-adjust: exact !important;
   }
 
 
@@ -480,64 +574,106 @@
      TABLE FOOTER
   =================================================== */
 
-  .print-table tfoot th {
+  .print-table tfoot {
+    display: table-footer-group !important;
+
     background: transparent !important;
+
+    background-color: transparent !important;
+  }
+
+
+  .print-table tfoot tr,
+  .print-table tfoot th,
+  .print-table tfoot td {
+    background: transparent !important;
+
+    background-color: transparent !important;
 
     color: #000000 !important;
 
+    border: 1px solid #000000 !important;
+
     font-weight: 700 !important;
-
-    -webkit-print-color-adjust: exact !important;
-
-    print-color-adjust: exact !important;
   }
 
 
   /* ===================================================
-     BOOTSTRAP STRIPED TABLE REMOVE
+     REMOVE BOOTSTRAP STRIPED BACKGROUND
   =================================================== */
 
   .print-table.table-striped > tbody > tr:nth-of-type(odd) > *,
   .print-table.table-striped > tbody > tr:nth-of-type(even) > * {
+    background: transparent !important;
+
+    background-color: transparent !important;
+
     --bs-table-accent-bg: transparent !important;
 
-    background-color: transparent !important;
-
-    background: transparent !important;
+    --bs-table-striped-bg: transparent !important;
   }
 
 
   /* ===================================================
-     BOOTSTRAP HOVER REMOVE
+     REMOVE BOOTSTRAP HOVER
   =================================================== */
 
-  .print-table.table-hover > tbody > tr:hover > * {
+  .print-table.table-hover > tbody > tr:hover > *,
+  .print-table.table-hover > tbody > tr:hover {
+    background: transparent !important;
+
     background-color: transparent !important;
 
-    background: transparent !important;
+    --bs-table-hover-bg: transparent !important;
   }
 
 
   /* ===================================================
-     BOOTSTRAP TABLE DARK REMOVE
+     REMOVE BOOTSTRAP TABLE-DARK
   =================================================== */
 
   .print-table .table-dark,
   .print-table .table-dark th,
-  .print-table .table-dark td {
+  .print-table .table-dark td,
+  .print-table thead.table-dark,
+  .print-table thead.table-dark th {
     background: transparent !important;
 
+    background-color: transparent !important;
+
     color: #000000 !important;
+
+    --bs-table-bg: transparent !important;
   }
 
 
   /* ===================================================
-     DECEASED
+     REMOVE BOOTSTRAP TABLE-LIGHT
+  =================================================== */
+
+  .print-table .table-light,
+  .print-table .table-light th,
+  .print-table .table-light td {
+    background: transparent !important;
+
+    background-color: transparent !important;
+
+    color: #000000 !important;
+
+    --bs-table-bg: transparent !important;
+  }
+
+
+  /* ===================================================
+     DECEASED ROW
   =================================================== */
 
   .print-deceased-row,
+  .print-deceased-row th,
   .print-deceased-row td {
     background: transparent !important;
+
+    background-color: transparent !important;
   }
 
 
@@ -549,13 +685,15 @@
 
 
   /* ===================================================
-     FOOTER
+     PRINT FOOTER
   =================================================== */
 
   .print-footer {
     display: flex !important;
 
     justify-content: space-between !important;
+
+    align-items: center !important;
 
     margin-top: 10px;
 
@@ -568,6 +706,8 @@
     color: #333333;
 
     background: transparent !important;
+
+    background-color: transparent !important;
   }
 
 
@@ -586,25 +726,44 @@
 
 
   /* ===================================================
-     BOOTSTRAP RESPONSIVE WRAPPER
-  =================================================== */
-
-  .table-responsive {
-    overflow: visible !important;
-
-    background: transparent !important;
-  }
-
-
-  /* ===================================================
      REMOVE CARD BACKGROUND
   =================================================== */
 
   .print-area .card,
-  .print-area .card-body {
+  .print-area .card-body,
+  .print-area .card-header,
+  .print-area .card-footer {
     background: transparent !important;
 
+    background-color: transparent !important;
+
     box-shadow: none !important;
+  }
+
+
+  /* ===================================================
+     REMOVE BOOTSTRAP BACKGROUNDS
+  =================================================== */
+
+  .print-area .bg-white,
+  .print-area .bg-light,
+  .print-area .bg-dark,
+  .print-area .bg-primary,
+  .print-area .bg-secondary {
+    background: transparent !important;
+
+    background-color: transparent !important;
+  }
+
+
+  /* ===================================================
+     PRINT COLOR
+  =================================================== */
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+
+    print-color-adjust: exact !important;
   }
 }
 
@@ -619,12 +778,22 @@
     font-size: 22px;
   }
 
+  .ugaai-header p {
+    font-size: 14px;
+  }
+
   .status-info {
     align-items: center;
   }
 
   .status-box {
     font-size: 12px;
+
+    padding: 7px 10px;
   }
 
+  .ugaai-table thead th,
+  .ugaai-table tbody td {
+    font-size: 12px;
+  }
 }
