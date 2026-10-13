@@ -60,7 +60,7 @@ const AppNavbar = () => {
               }}
             >
               <img
-                src="https://i.ibb.co/84RFXYmB/logo.png"
+                src="https://i.ibb.co/84RFXYmB/logo.png.jpg"
                 alt="Chakra"
                 style={{
                   height: "70px",
