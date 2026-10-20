@@ -28,6 +28,8 @@ import AmbedkarParkHome from "./components/AmbedkarParkHome.jsx";
 import Committee from "./components/Committee.jsx";
 import Karyakram from "./components/Karyakram.jsx";
 import Contact from "./components/Contact.jsx";
+import UsersList from "./components/UserList";
+
 
 export default function App() {
   return (
@@ -62,6 +64,7 @@ export default function App() {
           path="activistpage"
           element={<ActivistPage />}
         />
+          <Route path="users" element={<UsersList />} />
 
         <Route
           path="about"
@@ -116,6 +119,7 @@ export default function App() {
               path="ugaaiList"
               element={<UgaaiList />}
             />
+          <Route path="users" element={<UsersList />} />
 
             <Route
               path="ugaaiUpload"
